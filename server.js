@@ -2,6 +2,7 @@ const express = require("express");
 const connectDB = require("./config/db");
 const path = require('path')
 const app = express();
+const cors = require('cors')
 const config = require("config");
 
 const Prompts = require("./models/Prompts")
@@ -10,7 +11,7 @@ connectDB();
 
 //init Middleware
 app.use(express.json({extended:false}))
-
+app.use(cors())
 
 
 app.get("/", (req, res) => res.json({ msg: `Welcome to WriteInspyre` }));
